@@ -1,0 +1,19 @@
+{
+  "name": "movie-analyst-api",
+  "version": "1.0.0",
+  "description": "Backend API",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/juan-ruiz/movie-analyst-api.git"
+  },
+  "author": "Juan Ruiz",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/juan-ruiz/movie-analyst-api/issues"
+  },
+  "homepage": "https://github.com/juan-ruiz/movie-analyst-api#readme"
+}

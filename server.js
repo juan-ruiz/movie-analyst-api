@@ -8,11 +8,17 @@ var rsaValidation = require('auth0-api-jwt-rsa-validation');
 
 
 
+
+
+
+
+
+
 // Implement the movies API endpoint
 app.get('/movies', function(req, res){
   // Get a list of movies and their review scores
   var movies = [
-    {title : 'Suicide Squad', release: '2016', score: 8, reviewer: 'Robert Smith', publication : 'The Daily Reviewer'},    
+    {title : 'ME LA PELA', release: '2016', score: 8, reviewer: 'Robert Smith', publication : 'The Daily Reviewer'},    
     {title : 'Batman vs. Superman', release : '2016', score: 6, reviewer: 'Chris Harris', publication : 'International Movie Critic'},
     {title : 'Captain America: Civil War', release: '2016', score: 9, reviewer: 'Janet Garcia', publication : 'MoviesNow'},
     {title : 'Deadpool', release: '2016', score: 9, reviewer: 'Andrew West', publication : 'MyNextReview'},

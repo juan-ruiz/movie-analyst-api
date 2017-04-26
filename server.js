@@ -28,7 +28,7 @@ app.get('/movies', function(req, res){
 app.get('/', function(req, res){
     //get the juan api
 
-    var jsonResp = {message: "Hablamelo papi!!!!!!"};
+    var jsonResp = {message: "TESTING HOOK"};
 
     res.json(jsonResp);
 })

@@ -1,8 +1,9 @@
 var supertest = require("supertest");
 var should = require("should");
 
-
-var server = supertest.agent("http://localhost:3000");
+console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
+console.log(process.env.PORT);
+var server = supertest.agent("http://localhost:"+process.env.PORT);
 
 // UNIT test begin
 

@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuites name="Mocha Tests" time="0.105" tests="1" failures="0">
-  <testsuite name="Root Suite" timestamp="2017-04-27T19:27:12" tests="0" failures="0" time="0">
-  </testsuite>
-  <testsuite name="unit test" timestamp="2017-04-27T19:27:12" tests="1" file="C:\Users\jruiz\workspace\nodeBackend\movie-analyst-api\test\test.js" failures="0" time="0.105">
-    <testcase name="unit test should return home page" time="0.105" classname="should return home page">
-    </testcase>
-  </testsuite>
-</testsuites>

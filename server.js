@@ -89,4 +89,4 @@ app.get('/pending', function(req, res){
 
 console.log(process.env.PORT);
 // Launch our API Server and have it listen on port 8080.
-app.listen(process.env.PORT);
+app.listen(process.env.PORT || 3000);

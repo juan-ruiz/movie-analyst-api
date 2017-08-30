@@ -1,26 +1,27 @@
-var supertest = require("supertest");
-var should = require("should");
+process.env.NODE_ENV = 'test';
 
-console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
-console.log(process.env.PORT);
-var server = supertest.agent("http://localhost:"+process.env.PORT);
+//Require the dev-dependencies
+let chai = require('chai');
+let chaiHttp = require('chai-http');
+let server = require('../server');
+let should = chai.should();
 
-// UNIT test begin
+chai.use(chaiHttp);
+//Our parent block
+describe('API', () => {
 
-describe("unit test",function(){
-
-  // #1 should return home page
-  it("should return home page",function(done){
-    // calling home page
-    server
-    .get("/")
-    .expect("Content-type",/text/)
-    .expect(200) // THis is HTTP response
-    .end(function(err,res){
-      // HTTP status should be 200
-      res.status.should.equal(200);
-      done();
-    });
+/*
+  * Test the /GET route
+  */
+  describe('/GET home', () => {
+      it('it should GET any reply', (done) => {
+        chai.request(server)
+            .get('/')
+            .end((err, res) => {
+                res.should.have.status(200);
+              done();
+            });
+      });
   });
-//
+
 });

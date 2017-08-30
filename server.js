@@ -83,14 +83,9 @@ app.get('/publications', function(req, res){
 // Implement the pending reviews API endpoint
 app.get('/pending', function(req, res){
   // Get a list of pending movie reviews
-  var pending = [
-    {title : 'Superman: Homecoming', release: '2017', score: 10, reviewer: 'Chris Harris', publication: 'International Movie Critic'},
-    {title : 'Wonder Woman', release: '2017', score: 8, reviewer: 'Martin Thomas', publication : 'TheOne'},
-    {title : 'Doctor Strange', release : '2016', score: 7, reviewer: 'Anthony Miller', publication : 'ComicBookHero.com'}
-  ]
-
-  // Send the list of pending movie reviews as a JSON array
-  res.send(pending);
+     connection.query("select m.title, m.release, m.score, r.name as reviewer, p.name as publication from movie_db.movies m, movie_db.reviewers r, movie_db.publications p where r.publication=p.name and m.reviewer=r.name and m.release=2018",function(err, rows){
+        res.json(rows);
+    });  
 })
 
 console.log("server listening through port: "+process.env.PORT);

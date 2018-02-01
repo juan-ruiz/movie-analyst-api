@@ -11,7 +11,6 @@ var connection = mysql.createConnection({
 
 connection.connect();
 
-
 function getMovies(callback) {    
         connection.query("SELECT * FROM movie_db.movies",
             function (err, rows) {
@@ -20,11 +19,6 @@ function getMovies(callback) {
         );    
 }
 
-
-
-
-
-
 // Implement the movies API endpoint
 app.get('/movies', function(req, res){
 
@@ -32,7 +26,6 @@ app.get('/movies', function(req, res){
         res.json(rows);
     });  
 })
-
 
 app.get('/', function(req, res, next) {   
     //now you can call the get-driver, passing a callback function
@@ -46,16 +39,6 @@ app.get('/', function(req, res, next) {
 // Implement the reviewers API endpoint
 app.get('/reviewers', function(req, res){
   // Get a list of all of our reviewers
-  var authors = [
-    {name : 'Robert Smith', publication : 'The Daily Reviewer', avatar: 'https://s3.amazonaws.com/uifaces/faces/twitter/angelcolberg/128.jpg'},
-    {name: 'Chris Harris', publication : 'International Movie Critic', avatar: 'https://s3.amazonaws.com/uifaces/faces/twitter/bungiwan/128.jpg'},
-    {name: 'Janet Garcia', publication : 'MoviesNow', avatar: 'https://s3.amazonaws.com/uifaces/faces/twitter/grrr_nl/128.jpg'},
-    {name: 'Andrew West', publication : 'MyNextReview', avatar: 'https://s3.amazonaws.com/uifaces/faces/twitter/d00maz/128.jpg'},
-    {name: 'Mindy Lee', publication: 'Movies n\' Games', avatar: 'https://s3.amazonaws.com/uifaces/faces/twitter/laurengray/128.jpg'},
-    {name: 'Martin Thomas', publication : 'TheOne', avatar : 'https://s3.amazonaws.com/uifaces/faces/twitter/karsh/128.jpg'},
-    {name: 'Anthony Miller', publication : 'ComicBookHero.com', avatar : 'https://s3.amazonaws.com/uifaces/faces/twitter/9lessons/128.jpg'}
-  ];
-
     connection.query("select r.name, r.publication, r.avatar from movie_db.reviewers r",function(err, rows){
           res.json(rows);
       });  
@@ -65,16 +48,6 @@ app.get('/reviewers', function(req, res){
 // Implement the publications API endpoint
 app.get('/publications', function(req, res){
   // Get a list of publications
-  var publications = [
-    {name : 'The Daily Reviewer', avatar: 'glyphicon-eye-open'},
-    {name : 'International Movie Critic', avatar: 'glyphicon-fire'},
-    {name : 'MoviesNow', avatar: 'glyphicon-time'},
-    {name : 'MyNextReview', avatar: 'glyphicon-record'},
-    {name : 'Movies n\' Games', avatar: 'glyphicon-heart-empty'},
-    {name : 'TheOne', avatar : 'glyphicon-globe'},
-    {name : 'ComicBookHero.com', avatar : 'glyphicon-flash'}
-  ];
-
     connection.query("select * from movie_db.publications",function(err, rows){
           res.json(rows);
       }); 

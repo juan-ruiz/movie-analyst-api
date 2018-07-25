@@ -9,7 +9,7 @@ var app = express();
 //  database : process.env.DB_NAME || 'movie_db'
 //});
 
-connection.connect();
+//connection.connect();
 
 //function getMovies(callback) {    
 //        connection.query("SELECT * FROM movie_db.movies",

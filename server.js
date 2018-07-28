@@ -19,6 +19,12 @@ var app = express();
 //        );    
 //}
 
+//Testing endpoint
+app.get('/', function(req, res){
+  var response = [{response : 'hello'}, {code : '200'}]
+  res.json(response);
+})
+
 // Implement the movies API endpoint
 app.get('/movies', function(req, res){
   var movies = [

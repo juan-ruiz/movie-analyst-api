@@ -1,26 +1,29 @@
 // Get our dependencies
 var express = require('express');
 var app = express();
-//var mysql = require("mysql");
-//var connection = mysql.createConnection({
-//  host     : process.env.DB_HOST || 'mysql-test.cxrpknmq0hfi.us-west-2.rds.amazonaws.com',
-//  user     : process.env.DB_USER || 'applicationuser',
-//  password : process.env.DB_PASS || 'applicationuser',
-//  database : process.env.DB_NAME || 'movie_db'
-//});
 
-//connection.connect();
+const { Client } = require('pg')
+const connectionData = {
+  user     : process.env.POSTGRES_USER || 'gcpuser',
+  host     : process.env.DB_HOST ,
+  database : process.env.DB_NAME || 'movie_db',
+  password : process.env.POSTGRES_PASSWORD,
+  port: process.env.DB_PORT ||5432
+}
 
-//function getMovies(callback) {    
-//        connection.query("SELECT * FROM movie_db.movies",
-//            function (err, rows) {
-//                callback(err, rows); 
-//            }
-//        );    
-//}
+const client = new Client(connectionData)
+client.connect();
+
+function getMovies(callback) {    
+        client.query("SELECT * FROM movie_db.movies",
+            function (err, rows) {
+                callback(err, rows); 
+            }
+        );    
+}
 
 //Testing endpoint
-app.get('/', function(req, res){
+app.get('/test', function(req, res){
   var response = [{response : 'hello'}, {code : '200'}]
   res.json(response);
 })
@@ -40,14 +43,14 @@ app.get('/movies', function(req, res){
   res.json(movies);
 })
 
-//app.get('/', function(req, res, next) {   
+app.get('/', function(req, res, next) {   
     //now you can call the get-driver, passing a callback function
-//    getMovies(function (err, moviesResult){ 
+    getMovies(function (err, moviesResult){ 
        //you might want to do something is err is not null...      
-//       res.json(moviesResult);
+       res.json(moviesResult);
 
-//    });
-//});
+    });
+});
 
 // Implement the reviewers API endpoint
 app.get('/reviewers', function(req, res){

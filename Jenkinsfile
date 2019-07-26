@@ -2,6 +2,9 @@ pipeline {
     agent {
         docker { image 'node:12-alpine' }
     }
+    environment {
+        HOME = '.'
+    }
     stages {
         stage('build') {
             steps {
@@ -20,3 +23,4 @@ pipeline {
         }
     }
 }
+

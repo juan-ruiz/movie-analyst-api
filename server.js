@@ -14,20 +14,8 @@ const connectionData = {
 const client = new Client(connectionData)
 client.connect()
 
-//var mysql = require("mysql");
-//var connection = mysql.createConnection({
-//  host     : process.env.DB_HOST || 'mysql-test.cxrpknmq0hfi.us-west-2.rds.amazonaws.com',
-//  user     : process.env.DB_USER || 'applicationuser',
-//  password : process.env.DB_PASS || 'applicationuser',
-//  database : process.env.DB_NAME || 'movie_db'
-//});
-
-//connection.connect();
-
 function getMovies(callback) {    
-       client.query("SELECT * movies",function (err, rows) {
-               callback(err, rows); 
-            }
+       client.query("SELECT * movies",function (err, rows) {callback(err, rows); }
             );    
 }
 

@@ -31,12 +31,11 @@ function getMovies(callback) {
             );    
 }
 
-
 app.get('/', function(req, res, next) {   
   //now you can call the get-driver, passing a callback function
   getMovies(function (err, moviesResult){ 
      //you might want to do something is err is not null...      
-     res.json(moviesResult);
+     res.json(moviesResult.rows);
      res.send("prueba")
   });
 });

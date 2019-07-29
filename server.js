@@ -37,7 +37,7 @@ app.get('/', function(req, res, next) {
   getMovies(function (err, moviesResult){ 
      //you might want to do something is err is not null...      
      res.json(moviesResult);
-
+     res.send("prueba")
   });
 });
 

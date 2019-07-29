@@ -25,18 +25,28 @@ client.connect()
 //connection.connect();
 
 function getMovies(callback) {    
-       client.query("SELECT * FROM movie_db.movies",
-           function (err, rows) {
+       client.query("SELECT * movies",function (err, rows) {
                callback(err, rows); 
             }
-       );    
+            );    
 }
+
+
+app.get('/', function(req, res, next) {   
+  //now you can call the get-driver, passing a callback function
+  getMovies(function (err, moviesResult){ 
+     //you might want to do something is err is not null...      
+     res.json(moviesResult);
+
+  });
+});
 
 //Testing endpoint
 app.get('/test', function(req, res){
   var response = [{response : 'hello'}, {code : '200'}]
   res.json(response);
 })
+
 
 // Implement the movies API endpoint
 app.get('/movies', function(req, res){
@@ -53,14 +63,7 @@ app.get('/movies', function(req, res){
   res.json(movies);
 })
 
-app.get('/', function(req, res, next) {   
-    //now you can call the get-driver, passing a callback function
-    getMovies(function (err, moviesResult){ 
-       //you might want to do something is err is not null...      
-       res.json(moviesResult);
 
-    });
-});
 
 // Implement the reviewers API endpoint
 app.get('/reviewers', function(req, res){

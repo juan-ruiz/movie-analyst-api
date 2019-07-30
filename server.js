@@ -1,6 +1,8 @@
 // Get our dependencies
 var express = require('express');
 var app = express();
+
+
 const { Client } = require('pg')
 
 
@@ -22,7 +24,27 @@ client.connect()
 //  database : process.env.DB_NAME || 'movie_db'
 //});
 
-//connection.connect();
+
+const { Client } = require('pg')
+const connectionData = {
+  user     : process.env.POSTGRES_USER || 'gcpuser',
+  host     : process.env.DB_HOST ,
+  database : process.env.DB_NAME || 'movie_db',
+  password : process.env.POSTGRES_PASSWORD,
+  port: process.env.DB_PORT ||5432
+}
+
+
+const client = new Client(connectionData)
+client.connect();
+
+function getMovies(callback) {    
+        client.query("SELECT * FROM movie_db.movies",
+            function (err, rows) {
+                callback(err, rows); 
+            }
+        );    
+}
 
 function getMovies(callback) {    
        client.query("SELECT * movies",function (err, rows) {
@@ -39,6 +61,7 @@ app.get('/', function(req, res, next) {
      res.send("prueba")
   });
 });
+
 
 //Testing endpoint
 app.get('/test', function(req, res){
@@ -61,6 +84,17 @@ app.get('/movies', function(req, res){
 
   res.json(movies);
 })
+
+
+app.get('/', function(req, res, next) {   
+    //now you can call the get-driver, passing a callback function
+    getMovies(function (err, moviesResult){ 
+       //you might want to do something is err is not null...      
+       res.json(moviesResult);
+
+    });
+});
+
 
 
 

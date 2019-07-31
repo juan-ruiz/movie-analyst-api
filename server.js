@@ -14,41 +14,10 @@ const connectionData = {
   port: 5432,
 }
 const client = new Client(connectionData)
-client.connect()
+client.connect().catch(function(){
+  console.log("connection failed")
+})
 
-<<<<<<< HEAD
-=======
-//var mysql = require("mysql");
-//var connection = mysql.createConnection({
-//  host     : process.env.DB_HOST || 'mysql-test.cxrpknmq0hfi.us-west-2.rds.amazonaws.com',
-//  user     : process.env.DB_USER || 'applicationuser',
-//  password : process.env.DB_PASS || 'applicationuser',
-//  database : process.env.DB_NAME || 'movie_db'
-//});
-
-
-const { Client } = require('pg')
-const connectionData = {
-  user     : process.env.POSTGRES_USER || 'gcpuser',
-  host     : process.env.DB_HOST ,
-  database : process.env.DB_NAME || 'movie_db',
-  password : process.env.POSTGRES_PASSWORD,
-  port: process.env.DB_PORT ||5432
-}
-
-
-const client = new Client(connectionData)
-client.connect();
-
-function getMovies(callback) {    
-        client.query("SELECT * FROM movie_db.movies",
-            function (err, rows) {
-                callback(err, rows); 
-            }
-        );    
-}
-
->>>>>>> eba5f708e701318e38caea4e131fdb25283731a3
 function getMovies(callback) {    
        client.query("SELECT * movies",function (err, rows) {callback(err, rows); }
             );    

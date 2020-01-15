@@ -1,23 +1,7 @@
-// Get our dependencies
-var express = require('express');
-var app = express();
-//var mysql = require("mysql");
-//var connection = mysql.createConnection({
-//  host     : process.env.DB_HOST || 'mysql-test.cxrpknmq0hfi.us-west-2.rds.amazonaws.com',
-//  user     : process.env.DB_USER || 'applicationuser',
-//  password : process.env.DB_PASS || 'applicationuser',
-//  database : process.env.DB_NAME || 'movie_db'
-//});
 
-//connection.connect();
+const express = require('express');
+let app = express();
 
-//function getMovies(callback) {    
-//        connection.query("SELECT * FROM movie_db.movies",
-//            function (err, rows) {
-//                callback(err, rows); 
-//            }
-//        );    
-//}
 
 //Testing endpoint
 app.get('/', function(req, res){
@@ -39,15 +23,6 @@ app.get('/movies', function(req, res){
 
   res.json(movies);
 })
-
-//app.get('/', function(req, res, next) {   
-    //now you can call the get-driver, passing a callback function
-//    getMovies(function (err, moviesResult){ 
-       //you might want to do something is err is not null...      
-//       res.json(moviesResult);
-
-//    });
-//});
 
 // Implement the reviewers API endpoint
 app.get('/reviewers', function(req, res){

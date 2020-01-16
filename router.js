@@ -1,6 +1,11 @@
 const express = require('express');
 let router = express.Router()
 
+router.get('/', function(req, res){
+  var response = [{response : 'hello'}, {code : '200'}]
+  res.json(response);
+})
+
 router.get('/reviewers', function(req, res){
     var authors = [
       {name : 'Robert Smith', publication : 'The Daily Reviewer', avatar: 'https://s3.amazonaws.com/uifaces/faces/twitter/angelcolberg/128.jpg'},
@@ -28,3 +33,28 @@ router.get('/reviewers', function(req, res){
   
     res.json(movies);
   })
+
+  router.get('/publications', function(req, res){
+    var publications = [
+      {name : 'The Daily Reviewer', avatar: 'glyphicon-eye-open'},
+      {name : 'International Movie Critic', avatar: 'glyphicon-fire'},
+      {name : 'MoviesNow', avatar: 'glyphicon-time'},
+      {name : 'MyNextReview', avatar: 'glyphicon-record'},
+      {name : 'Movies n\' Games', avatar: 'glyphicon-heart-empty'},
+      {name : 'TheOne', avatar : 'glyphicon-globe'},
+      {name : 'ComicBookHero.com', avatar : 'glyphicon-flash'}
+    ];
+  
+    res.json(publications);
+  })
+
+  router.get('/pending', function(req, res){
+    var pending = [
+      {title : 'Superman: Homecoming', release: '2017', score: 10, reviewer: 'Chris Harris', publication: 'International Movie Critic'},
+      {title : 'Wonder Woman', release: '2017', score: 8, reviewer: 'Martin Thomas', publication : 'TheOne'},
+      {title : 'Doctor Strange', release : '2016', score: 7, reviewer: 'Anthony Miller', publication : 'ComicBookHero.com'}
+    ]
+    res.json(pending);
+  })
+
+  module.exports = router;

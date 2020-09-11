@@ -28,7 +28,7 @@ app.get('/', function(req, res){
 // Implement the movies API endpoint
 app.get('/movies', function(req, res){
   var movies = [
-    {title : 'Suicide Squad', release: '2016', score: 8, reviewer: 'Robert Smith', publication : 'The Daily Reviewer'},    
+    {title : 'Suicide Squad', release: '2018', score: 8, reviewer: 'Robert Smith', publication : 'The Daily Reviewer'},    
     {title : 'Batman vs. Superman', release : '2016', score: 6, reviewer: 'Chris Harris', publication : 'International Movie Critic'},
     {title : 'Captain America: Civil War', release: '2016', score: 9, reviewer: 'Janet Garcia', publication : 'MoviesNow'},
     {title : 'Deadpool', release: '2016', score: 9, reviewer: 'Andrew West', publication : 'MyNextReview'},

@@ -34,7 +34,7 @@ app.get('/movies', function(req, res){
     {title : 'Deadpool', release: '2016', score: 9, reviewer: 'Andrew West', publication : 'MyNextReview'},
     {title : 'Avengers: Age of Ultron', release : '2015', score: 7, reviewer: 'Mindy Lee', publication: 'Movies n\' Games'},
     {title : 'Ant-Man', release: '2015', score: 8, reviewer: 'Martin Thomas', publication : 'TheOne'},
-    {title : 'Guardians of the Galaxy', release : '12014', score: 10, reviewer: 'Anthony iller', publication : 'ComicBookHero.com'},
+    {title : 'Guardians of the Galaxy', release : '12014', score: 104, reviewer: 'Anthony iller', publication : 'ComicBookHero.com'},
   ]
 
   res.json(movies);

@@ -1,18 +1,23 @@
-node {
-    checkout scm
+pipeline {
+agent any
 
-    stage('install'){
-        def node = 'NodeJS'
-        nodejs(node){
-            sh 'npm install'
+    stages {
+
+        stage("build") {
+            steps {
+                nodejs('NodeJS') {
+                    sh 'npm install'
+            }
         }
     }
 
-    stage('test'){
-        def node = 'NodeJS'
-        nodejs(node){
+    stage("test") {
+        steps {
+            nodejs('NodeJS') {
             sh 'node index.js &'
             sh 'npm test'
+            }
         }
     }
+}
 }

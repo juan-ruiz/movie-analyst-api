@@ -8,7 +8,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 echo 'Checkout...'
-                sh 'rm -rf UI; git clone https://github.com/jeisonroa1/movie-analyst-api.git UI'
+                sh 'rm -rf API; git clone https://github.com/jeisonroa1/movie-analyst-api.git API'
             }
 
         }
@@ -25,6 +25,23 @@ pipeline {
 				sh 'cd UI; npm test'
             }
 
+        }
+		stage('Artifact Creation') {
+            steps {
+                echo 'Creating Artifact...'
+				sh 'rm -f API.zip'
+				script {zip zipFile: 'API.zip', archive:false, dir:'API'}
+            }
+        }
+		stage('Artifact Upload') {
+            steps {
+                echo 'Uploading'
+				withAWS(){
+					s3Upload(file:'API.zip', bucket:'rampupartifactrepo')
+				}
+				echo 'Uploaded'
+            }
+			
         }
     }	
 }

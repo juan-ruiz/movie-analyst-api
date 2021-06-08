@@ -23,5 +23,37 @@ describe('API', () => {
             });
       });
   });
+  
+  describe('/GET movies', () => {
+      it('it should GET any reply', (done) => {
+        chai.request(server)
+            .get('/movies')
+            .end((err, res) => {
+                res.should.have.status(200);
+              done();
+            });
+      });
+  });
+  
+  describe('/GET reviewers', () => {
+      it('it should GET any reply', (done) => {
+        chai.request(server)
+            .get('/reviewers')
+            .end((err, res) => {
+                res.should.have.status(200);
+              done();
+            });
+      });
+  });
 
+describe('/GET publication', () => {
+      it('it should GET any reply', (done) => {
+        chai.request(server)
+            .get('/publications')
+            .end((err, res) => {
+                res.should.have.status(200);
+              done();
+            });
+      });
+  });
 });

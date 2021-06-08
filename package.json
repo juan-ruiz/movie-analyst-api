@@ -4,19 +4,19 @@
   "description": "Backend API",
   "main": "index.js",
   "scripts": {
-    "test": "mocha",
+    "test": "mocha --exit",
     "start": "SET NODE_ENV=dev && node server.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/juan-ruiz/movie-analyst-api.git"
+    "url": "git+https://github.com/jeisonroa1/movie-analyst-api.git"
   },
   "author": "Juan Ruiz",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/juan-ruiz/movie-analyst-api/issues"
+    "url": "https://github.com/jeisonroa1/movie-analyst-api/issues"
   },
-  "homepage": "https://github.com/juan-ruiz/movie-analyst-api#readme",
+  "homepage": "https://github.com/jeisonroa1/movie-analyst-api#readme",
   "dependencies": {
     "auth0-api-jwt-rsa-validation": "0.0.3",
     "dotenv": "^8.2.0",

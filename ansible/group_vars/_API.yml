@@ -1,0 +1,7 @@
+# _UI.yml
+# --------------------
+# 
+# Variables for EC2 instances with tag App = UI
+---
+ansible_ssh_private_key_file: /home/ubuntu/Roam.pem
+ansible_user: ubuntu

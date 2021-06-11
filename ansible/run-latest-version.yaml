@@ -1,0 +1,15 @@
+---
+- name: Run latest version
+  hosts: _API
+  remote_user: ubuntu
+  become: yes
+  
+  tasks:
+  
+  - name: kill all processes
+    shell: "killall node -w"
+    ignore_errors: true
+      
+  - name: run server
+    shell:
+      cmd: nohup node /home/ubuntu/app/server.js &

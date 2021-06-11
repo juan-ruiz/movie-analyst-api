@@ -15,14 +15,14 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Build...'
-                sh 'cd UI; npm install -g mocha; npm install --production=false'
+                sh 'cd API; npm install -g mocha; npm install --production=false'
             }
 
         }
         stage('Test') {
             steps {
                 echo 'Testing...'
-				sh 'cd UI; npm test'
+				sh 'cd API; npm test'
             }
 
         }

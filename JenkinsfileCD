@@ -1,0 +1,25 @@
+pipeline {
+  agent any
+    stages {
+        stage('Artifact Fetch') {
+            steps {
+                echo 'Downloading UI'
+				withAWS(){
+					s3Download(file:'ansible/UI.zip', bucket:'rampupartifactrepo', path:'UI.zip', force:true)
+				}
+            }
+        }
+		stage('Find objective machines & deploy artifact'){
+			steps{
+				sh 'python3 -m pip install botocore; python3 -m pip install boto3; ansible-galaxy collection install amazon.aws'
+				sh 'cd ansible; ansible-playbook deploy-artifact.yaml -i aws_ec2.yaml'
+			}
+		}
+		stage('Run latest version'){
+			steps{
+				sh 'cd ansible; ansible-playbook run-latest-version.yaml -i aws_ec2.yaml'
+			}
+			
+		}
+    }
+}

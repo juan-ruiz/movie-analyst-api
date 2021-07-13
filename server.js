@@ -11,21 +11,46 @@ var connection = mysql.createConnection({
 
 connection.connect();
 
-function getMovies(callback) {    
-        connection.query("SELECT * FROM movie_db.movies",
-            function (err, rows) {
-                callback(err, rows); 
-            }
-        );    
-}
 
-/*
 //Testing endpoint
 app.get('/', function(req, res){
   var response = [{response : 'hello'}, {code : '200'}]
   res.json(response);
 })
 
+// Implement the reviewers API endpoint
+app.get('/reviewers', function(req, res, next){
+  getReviewers(function (err, reviewersResult){       
+    res.json(reviewersResult);
+  });
+})
+
+function getReviewers(callback) {    
+  connection.query("SELECT * FROM movie_db.reviewer",
+      function (err, rows) {
+          callback(err, rows); 
+      }
+  );    
+}
+
+// Implement the publications API endpoint
+app.get('/publications', function(req, res, next){
+  getPublications(function (err, publicationsResult){       
+    res.json(publicationsResult);
+  });
+})
+
+function getPublications(callback) {    
+  connection.query("SELECT * FROM movie_db.publication",
+      function (err, rows) {
+          callback(err, rows); 
+      }
+  );    
+}
+
+
+
+/*
 // Implement the movies API endpoint
 app.get('/movies', function(req, res){
   var movies = [
@@ -40,7 +65,16 @@ app.get('/movies', function(req, res){
 
   res.json(movies);
 })
-*/
+
+function getMovies(callback) {    
+        connection.query("SELECT * FROM movie_db.movies",
+            function (err, rows) {
+                callback(err, rows); 
+            }
+        );    
+}
+
+
 app.get('/', function(req, res, next) {   
     //now you can call the get-driver, passing a callback function
     getMovies(function (err, moviesResult){ 
@@ -49,7 +83,10 @@ app.get('/', function(req, res, next) {
 
     });
 });
+*/
 
+
+/*
 // Implement the reviewers API endpoint
 app.get('/reviewers', function(req, res){
   var authors = [
@@ -64,7 +101,9 @@ app.get('/reviewers', function(req, res){
 
   res.json(authors);
 })
+*/
 
+/*
 // Implement the publications API endpoint
 app.get('/publications', function(req, res){
   var publications = [
@@ -79,7 +118,7 @@ app.get('/publications', function(req, res){
 
   res.json(publications);
 })
-
+*/
 // Implement the pending reviews API endpoint
 app.get('/pending', function(req, res){
   var pending = [

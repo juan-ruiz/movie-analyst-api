@@ -48,7 +48,20 @@ function getPublications(callback) {
   );    
 }
 
+// Implement the publications API endpoint
+app.get('/movies', function(req, res, next){
+  getMovies(function (err, moviesResult){       
+    res.json(moviesResult);
+  });
+})
 
+function getMovies(callback) {    
+  connection.query("SELECT mr.title, mr.release, mr.score, mr.reviewer, rr.publication FROM mr movie_db.moviereview JOIN (SELECT rr.name, rr.publication FROM rr reviewer) AS r ON(rr.name = mr.reviewer) ",
+      function (err, rows) {
+          callback(err, rows); 
+      }
+  );    
+}
 
 /*
 // Implement the movies API endpoint

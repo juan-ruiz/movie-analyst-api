@@ -56,7 +56,7 @@ app.get('/movies', function(req, res, next){
 })
 
 function getMovies(callback) {    
-  connection.query("SELECT mr.title, mr.release, mr.score, mr.reviewer, rr.publication FROM mr movie_db.moviereview JOIN (SELECT rr.name, rr.publication FROM rr reviewer) AS r ON(rr.name = mr.reviewer) ",
+  connection.query("SELECT mr.title, mr.release, mr.score, mr.reviewer, rr.publication FROM mr movie_db.moviereview INNER JOIN (SELECT rr.name as name, rr.publication as publication FROM rr reviewer) AS r ON (r.name = mr.reviewer) ",
       function (err, rows) {
           callback(err, rows); 
       }

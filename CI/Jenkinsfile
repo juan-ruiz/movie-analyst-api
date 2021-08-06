@@ -1,0 +1,44 @@
+node {
+
+	step([$class: 'WsCleanup'])
+
+  stage('Checkout Code') {    
+  	checkout scm    
+  }
+          
+  stage('Run Test') {
+    docker.image('node:16-alpine3.11').inside {
+			withEnv([
+				'npm_config_cache=npm-cache',
+				'HOME=.',
+			]) {
+        sh 'npm install'
+        sh 'npm test'
+      }
+    }
+  }
+
+  stage("Build frontend image"){    
+      frontendImage = docker.build('andresbelo12/perficient-devops-ramp-up-api')   
+  }
+
+	stage("Pushing image to registry"){
+
+		docker.withRegistry('', 'andresbelo12-dockerhub') {
+      frontendImage.push('latest')
+    }
+     
+  }
+
+  stage("Removing unnecessary images"){
+    sh 'docker image prune -a -f --filter "label!=andresbelo12/perficient-devops-ramp-up-api"'
+  }
+
+  stage("Trigger CD") {
+    build job: 'movie-analyst-api-cd', parameters: [
+      string(name: 'TAG', value: "latest")
+    ]
+  }
+
+
+}

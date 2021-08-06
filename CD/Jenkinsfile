@@ -1,0 +1,27 @@
+node {
+  step([$class: 'WsCleanup'])
+
+
+  stage('Checkout aditional repo') {
+    dir('CM') {
+      git branch: 'master', url:"https://github.com/andresbelo12/ramp_up_cm.git"
+    }
+  }
+
+  stage('Execute deployment with ansible') {
+    dir('CM/ansible/backend') {
+      sh """
+        ansible-playbook main.yml\
+        -u ubuntu -vvv \
+        -e ansible_ssh_private_key_file="${PEM_PATH}" \
+        -e PORT=${PORT} \
+        -e DB_NAME=${DB_NAME} \
+        -e DB_USER=${DB_USER} \
+        -e DB_PASS=${DB_PASS} \
+        -e DB_HOST=${DB_HOST} \
+
+      """
+    }
+  }
+
+}

@@ -1,0 +1,16 @@
+﻿Your Estimate;;;;
+Service Type;Components;Region;Component Price;Service Price
+Amazon EC2 Service (US West (Northern California));;;;$44.28
+;Compute:;US West (Northern California);$40.44;
+;EBS Volumes:;US West (Northern California);$3.84;
+;EBS IOPS:;US West (Northern California);$ 0;
+;EBS Throughput:;US West (Northern California);$ 0;
+Amazon RDS Service (US West (Northern California));;;;$18.87
+;DB instances:;US West (Northern California);$16.11;
+;Storage:;US West (Northern California);$2.76;
+Amazon VPC Service (US West (Northern California));;;;$35.14
+;NAT Gateway;US West (Northern California);$35.14;
+AWS Support (Basic);;;;$ 0
+;Support for all AWS services:;;$ 0;
+;;Free Tier Discount:;;$-32.82
+;;Total Monthly Payment:;;$65.47

@@ -6,8 +6,6 @@ services:
       networks:
        - bridge
       container_name: backend
-      depends_on:
-        - db
       build:
         context: .
         dockerfile: Dockerfile

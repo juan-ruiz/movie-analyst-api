@@ -6,8 +6,8 @@ pipeline {
 agent any
 
 stages('code checkout') {
-    git clone "${REPOSITORY_URL}"
-    dir('${PATHREPOSITORY}')
+    git clone "https://github.com/stivenquirozc/movie-analyst-api.git"
+    dir('movie-analyst-api')
     git checkout
     }
 

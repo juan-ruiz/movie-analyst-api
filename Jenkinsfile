@@ -3,7 +3,7 @@ def PATHREPOSITORY = "movie-analyst-api"
 
 pipeline {
 
-agent { docker 'node' }
+agent any
 
 stages('code checkout') {
     git clone "${REPOSITORY_URL}"

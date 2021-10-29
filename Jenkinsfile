@@ -1,16 +1,21 @@
-stage('npm-build') {
-    agent {
-        docker {
-            image 'node:7.4'
+def REPOSITORY_URL = "https://github.com/stivenquirozc/movie-analyst-api.git"
+def PATHREPOSITORY = "movie-analyst-api"
+
+pipeline {
+
+agent { docker 'node' }
+
+stages('code checkout') {
+    git clone "${REPOSITORY_URL}"
+    dir('${PATHREPOSITORY}')
+    git checkout
+    }
+
+    stage('Build') {
+        
+        steps {
+           
         }
     }
 
-    steps {
-        echo "Branch is ${env.BRANCH_NAME}..."
-
-        withNPM(npmrcConfig:'my-custom-npmrc') {
-            echo "Performing npm build..."
-            sh 'npm install'
-        }
-    }
 }

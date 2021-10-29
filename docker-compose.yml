@@ -6,32 +6,11 @@ services:
       networks:
        - bridge
       container_name: backend
-      depends_on:
-        - db
       build:
         context: .
         dockerfile: Dockerfile
       ports:
        - "3000:3000"
-  db:
-    image: mysql:5.7
-    networks:
-     - bridge
-    container_name: mysql
-    ports:
-      - "3306:3306"
-    volumes:
-      - db_data:/var/lib/mysql
-    restart: always
-    environment:
-      MYSQL_ROOT_PASSWORD: applicationuser
-      MYSQL_DATABASE: movie_db
-      MYSQL_USER: applicationuser
-      MYSQL_PASSWORD: applicationuser
-
-volumes:
-  db_data: {}
-
 networks:
   bridge:
     external:

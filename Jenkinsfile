@@ -9,11 +9,6 @@ stages('code checkout') {
     git clone "https://github.com/stivenquirozc/movie-analyst-api.git"
         }
 
-    stage('Build') {
-        
-        steps {
-           
-        }
     }
 
-}
+

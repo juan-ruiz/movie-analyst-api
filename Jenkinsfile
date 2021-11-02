@@ -6,7 +6,7 @@ pipeline {
     stages{ 
         stage('code checkout') {
             steps{    
-                git checkout dev
+                sh echo 'git clonado....'
                 }
             }
 

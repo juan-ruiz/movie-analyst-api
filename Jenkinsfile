@@ -6,7 +6,7 @@ pipeline {
     stages{ 
         stage('code checkout') {
             steps{    
-                sh node -version
+                sh 'node -version'
                 }
             }
 

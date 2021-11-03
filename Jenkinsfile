@@ -11,8 +11,10 @@ pipeline {
      
     stage('Build') {
       steps {
-        sh 'npm install'
-        sh 'npm build'
+        sh "npm update"
+        sh "npm install"
+        sh "npm run build"
+        
       }
     }  
     
@@ -20,6 +22,7 @@ pipeline {
     stage('Test') {
       steps {
         sh 'node test/test.js'
+        sh 'echo "tryed..." '
       }
     }
   }

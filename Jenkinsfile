@@ -13,7 +13,7 @@ pipeline {
       steps {
         sh "npm update"
         sh "npm install"
-        sh "npm run build"
+        sh "npm build"
         
       }
     }  

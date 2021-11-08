@@ -25,6 +25,13 @@ pipeline {
         sh "echo tryed..."
       }
     }
+
+    stage('Build Image') {
+      steps {
+        sh "docker build -t stive_api_dev . "
+        sh "echo builded..."
+      }
+    }
   }
 }
 

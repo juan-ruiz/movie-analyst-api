@@ -1,4 +1,12 @@
 pipeline {
+
+   environment { 
+
+        registry = "squiroz/apitest" 
+        registryCredential = 'squiroz'
+        dockerImage = '' 
+
+    }
   agent  {label "principal"}
     
   stages {
@@ -26,12 +34,15 @@ pipeline {
       }
     }
 
-    stage('Build Image') {
-      steps {
-        sh "sudo docker build -t stive_api_dev ."
-        sh "echo builded..."
+    stage('Building our image') { 
+    steps { 
+    script { 
+    dockerImage = docker.build registry + ":$BUILD_NUMBER" 
+          }
+        }        
       }
-    }
+  
+  
   }
 }
 

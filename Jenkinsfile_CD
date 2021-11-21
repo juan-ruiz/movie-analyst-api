@@ -1,0 +1,20 @@
+pipeline {
+
+   environment { 
+
+        registry = "squiroz/apitest" 
+        registryCredential = 'squiroz'
+        dockerImage = '' 
+
+    }
+  agent  {label "principal"}
+    
+  stages {
+        
+    stage('docker pull') { 
+        steps { 
+        sh "docker push squiroz/apitest:latest" 
+            }
+          }  
+    }
+  }

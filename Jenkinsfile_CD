@@ -16,5 +16,11 @@ pipeline {
         sh "docker pull squiroz/apitest" 
             }
           }  
+    stage('docker run') { 
+        steps { 
+        sh "docker run -d -p 3000 squiroz/apitest:latest" 
+            }
+          }
+
     }
   }

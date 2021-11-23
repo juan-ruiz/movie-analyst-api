@@ -13,7 +13,7 @@ pipeline {
         
     stage('docker pull') { 
         steps { 
-        sh "docker push squiroz/apitest:latest" 
+        sh "docker pull squiroz/apitest" 
             }
           }  
     }

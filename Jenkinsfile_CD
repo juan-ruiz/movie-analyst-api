@@ -18,7 +18,7 @@ pipeline {
           }  
     stage('docker run') { 
         steps { 
-        sh "docker run -d -p 3000 squiroz/apitest:latest" 
+        sh "docker run -d -p 3000:3000 squiroz/apitest:latest" 
             }
           }
 

@@ -18,7 +18,8 @@ pipeline {
           }  
     stage('docker run') { 
         steps { 
-        sh "docker run -d -p 3000:3000 squiroz/apitest:latest" 
+        sh "docker rm -fv api-dev"
+        sh "docker run -d -p 3000:3000 --name api-dev squiroz/apitest:latest" 
             }
           }
 

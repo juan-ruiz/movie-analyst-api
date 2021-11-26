@@ -7,11 +7,11 @@ pipeline {
         dockerImage = '' 
 
     }
-  agent  {label "principal"}
+    agent  {label "principal"}
     
-  stages {
+    stages {
         
-    stage('Git') {
+      stage('Git') {
       steps {
         git 'https://github.com/stivenquirozc/movie-analyst-api.git'
       }
@@ -54,7 +54,7 @@ pipeline {
 
         stage('Cleaning up') { 
         steps { 
-        sh "docker rmi $registry:$BUILD_NUMBER"" 
+        sh "docker rmi $registry:$BUILD_NUMBER" 
             }
           }  
     }

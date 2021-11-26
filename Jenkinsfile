@@ -29,6 +29,7 @@ pipeline {
             
     stage('Test') {
       steps {
+        sh "docker rm -fv api"
         sh "npm test"
         sh "echo tryed..."
       }

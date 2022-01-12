@@ -1,0 +1,17 @@
+version: "3.9"
+
+services:
+  back:
+      image: backendd
+      networks:
+       - bridge
+      container_name: backend
+      build:
+        context: .
+        dockerfile: Dockerfile
+      ports:
+       - "3000:3000"
+networks:
+  bridge:
+    external:
+      name: app
